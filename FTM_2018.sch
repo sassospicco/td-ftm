@@ -1945,3 +1945,122 @@ Train: R35
     Stock: MU05
     Notes: Mezzana-Trento
 .
+
+Train: MI70
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 04:00, DepTrento2
+           04:01, 05:42, DepTrento@2
+           05:52, -, Trento
+    Stock: R50
+.
+
+Train: MI72
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 04:00, DepCroviana3
+           04:01, 08:35, DepCroviana@3
+           08:50, -, Male
+    Stock: R250
+.
+
+Train: MI74
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 04:00, DepTrento3
+           04:01, 07:50, DepTrento@3
+           08:00, -, Trento
+    Stock: R8
+.
+
+Train: MI76
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 04:00, DepCroviana4
+           04:01, 11:52, DepCroviana@4
+           12:07, -, Mostizzolo
+    Stock: R212
+.
+
+Train: MI78
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 04:00, DepTrento4
+           04:01, 13:20, DepTrento@4
+           13:30, -, Trento
+    Stock: R20
+.
+
+Train: MI80
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 04:00, DepTrento5
+           04:01, 19:12, DepTrento@5
+           19:22, -, Trento
+    Stock: R46
+.
+
+Train: MI71
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 04:00, DepCroviana5
+           04:01, 05:30, DepCroviana@5
+           05:45, -, Male
+    Stock: R51
+.
+
+Train: MU70
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 20:40, Mezzana
+           21:10, -, DepCroviana@3
+    Wait: R34 60
+.
+
+Train: MU72
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 21:14, Male
+           21:44, -, DepCroviana@4
+    Wait: R46 60
+.
+
+Train: MU71
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 11:40, Male
+           14:40, -, DepTrento@2
+    Wait: R253 60
+.
+
+Train: MU73
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 19:26, Trento
+           19:56, -, DepTrento@3
+    Wait: R31 60
+.
+
+Train: MU75
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 20:15, Trento
+           20:45, -, DepTrento@4
+    Wait: R33 60
+.
+
+Train: MU77
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 19:08, Male
+           19:38, -, DepCroviana@5
+    Wait: R219 60
+.
+
+Train: MU79
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 21:44, Trento
+           22:14, -, DepTrento@5
+    Wait: R35 60
+.
