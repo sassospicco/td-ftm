@@ -1,0 +1,23 @@
+/* XPM */
+static char* XpmEti400e[] = {
+"17 11  9 1",
+"  c None",
+"Z c #F8F8F8",
+"Y c #00827F",
+"X c #000000",
+"W c #FFFF00",
+"V c #ff3399",
+"U c #000000",
+"T c #CC0000",
+"S c #B3B3B3",
+"       TTT       ",
+"          TT     ",
+"       TTT       ",
+"VVVVVVVVVVVVVV   ",
+"ZZZZZZZZZZZSWVV  ",
+"ZVVZUUSUUZZSWWVV ",
+"ZVVZUUSUUZZSWWVVV",
+"ZVVZZZZZZZZSSSSSS",
+"ZVVZZZZZZZZZZZZZZ",
+"XVVSSSSSSXXSXXSX ",
+"         XX XX   "};

@@ -1,0 +1,162 @@
+# ATTENZIONE:  per la corretta inizializzazione del segnale, eventuali avvisi che lo 
+# 			seguono devono essere inseriti nel tracciato DOPO di esso, in modo che la 
+#			loro OnInit: venga eseguita prima.
+
+# Segnale di avviso da nascondere e piazzare a valle dei segnali di protezione o partenza 
+# in corretto tracciato, per farli aprire comunque come se il tracciato fosse deviato.
+# Tra questo avviso e il successivo segnale imperativo non ci devono essere scambi.
+# Siccome i segnali considerano un solo avviso a valle di essi, se dopo questo ne segue un 
+# altro il suo aspetto va "riportato" al segnale precedente. Per questo gli aspetti sono vari, 
+# anche se il segnale appare sempre spento:
+
+# thrown             (deviata forzata senza altri avvisi - il segnale successivo è imperativo)
+# red_thrown         (deviata forzata su segnale chiuso - richiede RG o RGG)
+# red_short_thrown   (deviata forzata su binario corto e segnale chiuso - richiede RGG)
+# yellow_thrown      (deviata forzata verso GG - richiede RG)
+# flashing_thrown    (deviata forzata verso G o avviso di deviata - richiede RGx o RV)
+# green_thrown       (deviata forzata verso Gx o V - richiede RV)
+# short_thrown       (deviata forzata su binario corto - se il prossimo è chiuso richiede RGG)
+
+# WARNING: For this signal to be initialized correctly, any other distant following this 
+#          signal should be placed in the scenario AFTER this one, so they will be 
+#          initialized BEFORE this one.
+
+# Special distant signal to be placed after a main signal to force the latter to show diverging 
+# aspects even if the route is straight. No switches can be present between this distant and the
+# following main signal. As only one pure distant is considered by previuos signals, if the next 
+# signal is also a pure distant, this signal must "report" back the aspect of that distant to the 
+# previous signal. That's why many aspects are used, but the signals remains unlit, as it should
+# be hidden:	
+
+# thrown             (force diverging; next isn't a pure distant, so no reporting is needed)
+# red_thrown         (force diverging on unclear signal - requires RY or RYY)
+# red_short_thrown   (force diverging on short track and unclear signal - requires RYY)
+# yellow_thrown      (force diverging: next pure distant shows YY - requires RY)
+# flashing_thrown    (force diverging on Y or on prepare to slow - requires RYx or RG)
+# green_thrown       (force diverging: next pure distant shows Yx or G - requires RG)
+# short_thrown       (force diverging on short track; if next main is unclear requires RYY)
+
+# P.Rosati  1/4/2015
+
+Aspect: thrown
+	IconE: NN_b_E.xpm
+	IconW: NN_b_W.xpm
+	IconN: NN_b_N.xpm
+	IconS: NN_b_S.xpm
+	Action: none
+
+Aspect: red_thrown
+	IconE: NN_b_E.xpm
+	IconW: NN_b_W.xpm
+	IconN: NN_b_N.xpm
+	IconS: NN_b_S.xpm
+	Action: none
+
+Aspect: short_thrown
+	IconE: NN_b_E.xpm
+	IconW: NN_b_W.xpm
+	IconN: NN_b_N.xpm
+	IconS: NN_b_S.xpm
+	Action: none
+
+Aspect: red_short_thrown
+	IconE: NN_b_E.xpm
+	IconW: NN_b_W.xpm
+	IconN: NN_b_N.xpm
+	IconS: NN_b_S.xpm
+	Action: none
+
+Aspect: yellow_thrown
+	IconE: NN_b_E.xpm
+	IconW: NN_b_W.xpm
+	IconN: NN_b_N.xpm
+	IconS: NN_b_S.xpm
+	Action: none
+
+Aspect: flashing_thrown
+	IconE: NN_b_E.xpm
+	IconW: NN_b_W.xpm
+	IconN: NN_b_N.xpm
+	IconS: NN_b_S.xpm
+	Action: none
+
+Aspect: green_thrown
+	IconE: NN_b_E.xpm
+	IconW: NN_b_W.xpm
+	IconN: NN_b_N.xpm
+	IconS: NN_b_S.xpm
+	Action: none
+
+# initial aspect
+
+OnInit:
+	if nextApproach.aspect = short		# Avviso che richiede RGG se il prossimo è chiuso
+		.aspect = short_thrown			# A distant follows, requiring RYY if next main is unclear
+		return
+	end
+	if nextApproach.aspect = red_short		# Avviso che richiede RGG - A distant follows, requiring RYY
+		.aspect = red_short_thrown
+		return
+	end
+	if nextApproach.aspect = red			# Avviso che richiede RG o RGG in base alla distanza
+		.aspect = red_thrown			# A distant follows, requiring YY or RYY dependig on the distance
+		return
+	end
+	if nextApproach.aspect = yellow_yellow
+		.aspect = yellow_thrown			# Avviso che richiede RG - A distant follows, requiring RY
+		return
+	end
+	if nextApproach.aspect = yellow or nextApproach.aspect = yellow_green or nextApproach.aspect = yellow_green_flashing or nextApproach.aspect = yellow_green_switching
+		if nextApproach.nextLength < 1200	# Avviso che richiede RGx - A distant follows, requiring RYx
+			.aspect = flashing_thrown
+		else							# Avviso che richiede RV - A distant follows, requiring RG
+			.aspect = green_thrown
+		end
+		return
+	end								# Avviso che richiede RV - A distant follows, requiring RG
+	if nextApproach.aspect = yellow_flashing or nextApproach.aspect = green
+		.aspect = green_thrown
+		return
+	end
+	.aspect = thrown					# Altri casi: segue imperativo - A main follows, no reporting
+end
+
+# user clicked on the signal
+
+OnCleared:
+	return
+end
+
+# another signal changed aspect
+
+OnUpdate:
+	if nextApproach.aspect = short		# Avviso che richiede RGG se il prossimo è chiuso
+		.aspect = short_thrown			# A distant follows, requiring RYY if next main is unclear
+		return
+	end
+	if nextApproach.aspect = red_short		# Avviso che richiede RGG - A distant follows, requiring RYY
+		.aspect = red_short_thrown
+		return
+	end
+	if nextApproach.aspect = red			# Avviso che richiede RG o RGG in base alla distanza
+		.aspect = red_thrown			# A distant follows, requiring YY or RYY dependig on the distance
+		return
+	end
+	if nextApproach.aspect = yellow_yellow
+		.aspect = yellow_thrown			# Avviso che richiede RG - A distant follows, requiring RY
+		return
+	end
+	if nextApproach.aspect = yellow or nextApproach.aspect = yellow_green or nextApproach.aspect = yellow_green_flashing or nextApproach.aspect = yellow_green_switching
+		if nextApproach.nextLength < 1200	# Avviso che richiede RGx - A distant follows, requiring RYx
+			.aspect = flashing_thrown
+		else							# Avviso che richiede RV - A distant follows, requiring RG
+			.aspect = green_thrown
+		end
+		return
+	end								# Avviso che richiede RV - A distant follows, requiring RG
+	if nextApproach.aspect = yellow_flashing or nextApproach.aspect = green
+		.aspect = green_thrown
+		return
+	end
+	.aspect = thrown					# Altri casi: segue imperativo - A main follows, no reporting
+end

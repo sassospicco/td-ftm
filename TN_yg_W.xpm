@@ -1,0 +1,15 @@
+/* XPM */
+static char* TN_yg_W[] = {
+"15 7 5 1",
+"  c none",
+". c #000000",
+"Y c #FFBB00",
+"G c #00E171",
+"W c #CCCCCC",
+"               ",
+"               ",
+" ...  ... ..  .",
+".YYY..GGG..W. .",
+".YYY..GGG..WW..",
+".YYY..GGG..W. .",
+" ...  ... ..  ."};

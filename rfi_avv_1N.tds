@@ -1,0 +1,68 @@
+# Segnale di avviso puro a vela tonda, seguito da un segnale imperativo.
+# Aspetti: G, Gx, V
+
+# Pure distant signal with 1 round head, followed by a main signal.
+# Aspects: Y, Yx, G
+
+# P.Rosati  15/6/2015
+
+Aspect: yellow
+	IconE: NN_y_E.xpm
+	IconW: NN_y_W.xpm
+	IconN: NN_y_N.xpm
+	IconS: NN_y_S.xpm
+	Action: none
+
+Aspect: yellow_flashing
+	IconE: NN_y_E.xpm NN_b_E.xpm
+	IconW: NN_y_W.xpm NN_b_W.xpm
+	IconN: NN_y_N.xpm NN_b_N.xpm
+	IconS: NN_y_S.xpm NN_b_S.xpm
+	Action: none
+
+Aspect: green
+	IconE: NN_g_E.xpm
+	IconW: NN_g_W.xpm
+	IconN: NN_g_N.xpm
+	IconS: NN_g_S.xpm
+	Action: none
+
+# initial aspect
+
+OnInit:
+	.aspect = yellow
+end
+
+# user opened the signal
+
+OnCleared:
+	return
+end
+
+# another signal changed aspect
+
+OnUpdate:		
+	# Prossimo è deviato (anche forzato) o segnale di partenza
+	# Next signal is diverging (or forced to) or is an exit signal
+	if next.switchThrown = 1 or next.nextApproach.script = "rfi_avv_dev.tds" or next.aspect = yellow_yellow or next.script > "rfi_pars" and next.script < "rfi_paru"
+		.aspect = yellow
+		return
+	end
+	# Prossimo = R o equivalente (S | RGG), anche forzato da un avviso rosso.
+	# Next is R or equivalent (S | RYY) or forced so by a distant at red.
+	if nextApproach.aspect = red or nextApproach.aspect = red_short or next.aspect = red or next.aspect = shunt or next.aspect = red_yellow_yellow
+		.aspect = yellow	# Segnale incompleto - Incomplete aspect
+	else 
+		# Prossimo = G o avviso di deviata (GV | GxVx | Gx/Vx)
+		# Next is Y or prepare to slow (YG | YxGx | Yx/Gx)
+		if next.aspect = yellow or next.aspect = yellow_green or next.aspect = yellow_green_flashing or next.aspect = yellow_green_switching
+			if next.nextLength < 1200
+				.aspect = yellow_flashing
+				return
+			end
+		end			
+		# Altri casi (Gx | V), compreso nessun altro segnale (uscita)
+		# Other cases (next is Yx or G), including no more signals (exit point)
+		.aspect = green
+	end
+end

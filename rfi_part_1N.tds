@@ -1,0 +1,266 @@
+# Segnale di partenza a vela tonda, seguito da qualsiasi segnale.
+# I segnali precedenti lo vedono sempre a via impedita.
+#
+# Aspetti consentiti: R, S, G, Gx, V    da considerare come i nomi:   R, S, RG, RGx, RV
+
+# Exit signal with 1 square head and a triangle below it, followed by whatever signal.
+# Previous signals consider this signal always unclear.
+
+# Aspects: R, S, Y, Yx, G,     to be "seen" by the driver as their names:   R, S, RY, RYx, RG
+
+# P.Rosati  15/6/2015
+
+Aspect: red
+	IconE: TN_r_E.xpm
+	IconW: TN_r_W.xpm
+	IconN: TN_r_N.xpm
+	IconS: TN_r_S.xpm
+	Action: stop
+
+Aspect: shunt
+	IconE: TN_r_E.xpm
+	IconW: TN_r_W.xpm
+	IconN: TN_r_N.xpm
+	IconS: TN_r_S.xpm
+	Action: speedLimit 20
+
+Aspect: red_yellow_30
+	IconE: TN_y_E.xpm
+	IconW: TN_y_W.xpm
+	IconN: TN_y_N.xpm
+	IconS: TN_y_S.xpm
+	Action: speedLimit 30
+
+Aspect: red_yellow_flashing_30
+	IconE: TN_y_E.xpm TN_b_E.xpm
+	IconW: TN_y_W.xpm TN_b_W.xpm
+	IconN: TN_y_N.xpm TN_b_N.xpm
+	IconS: TN_y_S.xpm TN_b_S.xpm
+	Action: speedLimit 30
+
+Aspect: red_green_30
+	IconE: TN_g_E.xpm
+	IconW: TN_g_W.xpm
+	IconN: TN_g_N.xpm
+	IconS: TN_g_S.xpm
+	Action: speedLimit 30
+
+Aspect: red_yellow_60
+	IconE: TN_y_E.xpm
+	IconW: TN_y_W.xpm
+	IconN: TN_y_N.xpm
+	IconS: TN_y_S.xpm
+	Action: speedLimit 60
+
+Aspect: red_yellow_flashing_60
+	IconE: TN_y_E.xpm TN_b_E.xpm
+	IconW: TN_y_W.xpm TN_b_W.xpm
+	IconN: TN_y_N.xpm TN_b_N.xpm
+	IconS: TN_y_S.xpm TN_b_S.xpm
+	Action: speedLimit 60
+
+Aspect: red_green_60
+	IconE: TN_g_E.xpm
+	IconW: TN_g_W.xpm
+	IconN: TN_g_N.xpm
+	IconS: TN_g_S.xpm
+	Action: speedLimit 60
+
+# initial aspect
+
+OnInit:
+	.aspect = red
+end
+
+# user clicked on the signal
+
+OnCleared:
+	if .aspect ! red
+		.aspect = red
+		return
+	end	
+	# Limite che forza la manovra: shunt   -   Speed limit forcing shunt (S)
+	if .nextLimit < 30
+		.aspect = shunt
+		return
+	end
+	# Prosecuzione itinerario: shunt se il segnale dopo è R o S
+	# Route continuation: shunt if next signal is R or S
+	if .nextStation = V 	 	
+		if next.aspect = red or next.aspect = shunt
+			.aspect = shunt
+			return
+		end
+	end
+# D'ora in poi ogni aspetto finisce con _30 per le deviate a 30, e con _60 per le altre
+# From here on each aspect ends with _30 for diverging at 30 km/h and with _60 for the other
+	# Avvisi che richiedono G - Distants requiring Y follow
+	if nextApproach.aspect = yellow_yellow or nextApproach.aspect = yellow_thrown or nextApproach.aspect = red_thrown or nextApproach.aspect = red_short_thrown or nextApproach.aspect = red or nextApproach.aspect = red_short 
+		if .nextLimit < 60
+			.aspect = red_yellow_30
+		else
+			.aspect = red_yellow_60
+		end
+		return
+	end
+	# Avviso = G o avviso di deviata (GV | GxVx | Gx/Vx) richiede Gx o V
+	# A distant at Y or prepare to slow (YG | YxGx | Yx/Gx) requires Yx or G 
+	if nextApproach.aspect = yellow or nextApproach.aspect = yellow_green or nextApproach.aspect = yellow_green_flashing or nextApproach.aspect = yellow_green_switching or nextApproach.aspect = flashing_thrown
+		if nextApproach.nextLength < 1200 or nextApproach.aspect = flashing_thrown
+			if .nextLimit < 60
+				.aspect = red_yellow_flashing_30
+			else
+				.aspect = red_yellow_flashing_60
+			end
+		else
+			if .nextLimit < 60
+				.aspect = red_green_30
+			else
+				.aspect = red_green_60
+			end
+		end
+		return
+	end
+	# Avvisi che richiedono V - Distants requiring G follow
+	if nextApproach.aspect = yellow_flashing or nextApproach.aspect = green or nextApproach.aspect = green_thrown
+		if .nextLimit < 60
+			.aspect = red_green_30
+		else
+			.aspect = red_green_60
+		end
+		return
+	end
+	# Qui l'avviso va ignorato o non c'è: controllo se Prossimo = R o equivalente (S | GG | RGG o 
+	# segnale di partenza) o deviato, anche forzato (segnale incompleto)
+	# Here the following distant is missing or should be ignored: check if next is R or equivalent 
+	# (S | YY | RYY or exit signal) or diverging - even forced (incomplete aspect)
+	if next.aspect = red or next.aspect = shunt or next.aspect = yellow_yellow or next.aspect = red_yellow_yellow or next.switchThrown = 1 or next.nextApproach.script = "rfi_avv_dev.tds" or next.script > "rfi_pars" and next.script < "rfi_paru"
+		if .nextLimit < 60
+			.aspect = red_yellow_30
+		else
+			.aspect = red_yellow_60
+		end
+	else 
+		# Prossimo = G o avviso di deviata (GV | GxVx | Gx/Vx)
+		# Next is Y or prepare to slow (YG | YxGx | Yx/Gx)
+		if next.aspect = yellow or next.aspect = yellow_green or next.aspect = yellow_green_flashing or next.aspect = yellow_green_switching
+			if next.nextLength < 1200
+				if .nextLimit < 60
+					.aspect = red_yellow_flashing_30
+				else
+					.aspect = red_yellow_flashing_60
+				end
+				return
+			end
+		end		
+		# Altri casi (Gx | V), compreso nessun altro segnale (uscita)
+		# Other cases (next is Yx or G), including no more signals (exit point)
+		if .nextLimit < 60
+			.aspect = red_green_30
+		else
+			.aspect = red_green_60
+		end
+	end
+end
+
+# another signal changed aspect
+
+OnUpdate:
+	# Se R non importa cosa segue: non cambia - If R ignore other signals
+	if .aspect = red 
+		return
+	end
+	# Shunt vero: non cambia - If it's a real shunt ignore other signals
+	if .aspect = shunt
+		if .nextLimit < 30 or .color = white
+			return
+		end
+	end
+	# Prosecuzione itinerario: shunt se il segnale dopo è R o S
+	# Route continuation: shunt if next signal is R or S
+	if .nextStation = V 	 	
+		if next.aspect = red or next.aspect = shunt
+			.aspect = shunt
+			return
+		end
+	end
+# D'ora in poi ogni aspetto finisce con _30 per le deviate a 30, e con _60 per le altre
+# From here on each aspect ends with _30 for diverging at 30 km/h and with _60 for the other
+	# Avvisi che richiedono G - Distants requiring Y follow
+	if nextApproach.aspect = yellow_yellow or nextApproach.aspect = yellow_thrown or nextApproach.aspect = red_thrown or nextApproach.aspect = red_short_thrown or nextApproach.aspect = red or nextApproach.aspect = red_short 
+		if .nextLimit < 60
+			.aspect = red_yellow_30
+		else
+			.aspect = red_yellow_60
+		end
+		return
+	end
+	# Avviso = G o avviso di deviata (GV | GxVx | Gx/Vx) richiede Gx o V
+	# A distant at Y or prepare to slow (YG | YxGx | Yx/Gx) requires Yx or G 
+	if nextApproach.aspect = yellow or nextApproach.aspect = yellow_green or nextApproach.aspect = yellow_green_flashing or nextApproach.aspect = yellow_green_switching or nextApproach.aspect = flashing_thrown
+		if nextApproach.nextLength < 1200 or nextApproach.aspect = flashing_thrown
+			if .nextLimit < 60
+				.aspect = red_yellow_flashing_30
+			else
+				.aspect = red_yellow_flashing_60
+			end
+		else
+			if .nextLimit < 60
+				.aspect = red_green_30
+			else
+				.aspect = red_green_60
+			end
+		end
+		return
+	end
+	# Avvisi che richiedono V - Distants requiring G follow
+	if nextApproach.aspect = yellow_flashing or nextApproach.aspect = green or nextApproach.aspect = green_thrown
+		if .nextLimit < 60
+			.aspect = red_green_30
+		else
+			.aspect = red_green_60
+		end
+		return
+	end
+	# Qui l'avviso va ignorato o non c'è: controllo se Prossimo = R o equivalente (S | GG | RGG o 
+	# segnale di partenza) o deviato, anche forzato (segnale incompleto)
+	# Here the following distant is missing or should be ignored: check if next is R or equivalent 
+	# (S | YY | RYY or exit signal) or diverging - even forced (incomplete aspect)
+	if next.aspect = red or next.aspect = shunt or next.aspect = yellow_yellow or next.aspect = red_yellow_yellow or next.switchThrown = 1 or next.nextApproach.script = "rfi_avv_dev.tds" or next.script > "rfi_pars" and next.script < "rfi_paru"
+		if .nextLimit < 60
+			.aspect = red_yellow_30
+		else
+			.aspect = red_yellow_60
+		end
+	else 
+		# Prossimo = G o avviso di deviata (GV | GxVx | Gx/Vx)
+		# Next is Y or prepare to slow (YG | YxGx | Yx/Gx)
+		if next.aspect = yellow or next.aspect = yellow_green or next.aspect = yellow_green_flashing or next.aspect = yellow_green_switching
+			if next.nextLength < 1200
+				if .nextLimit < 60
+					.aspect = red_yellow_flashing_30
+				else
+					.aspect = red_yellow_flashing_60
+				end
+				return
+			end
+		end		
+		# Altri casi (Gx | V), compreso nessun altro segnale (uscita)
+		# Other cases (next is Yx or G), including no more signals (exit point)
+		if .nextLimit < 60
+			.aspect = red_green_30
+		else
+			.aspect = red_green_60
+		end
+	end
+end
+
+# user Ctrl-clicked on the signal
+
+OnShunt:
+	if .color = white
+		.aspect = shunt
+	else
+		.aspect = red
+	end
+end

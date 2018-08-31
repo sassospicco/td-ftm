@@ -1,0 +1,181 @@
+# Segnale imperativo a una vela, seguito da qualsiasi segnale.
+# Aspetti consentiti: R, S, G, Gx, V
+
+# Main signal with 1 round head and an arrow above, followed by whatever signal.
+# Aspects: R, S, Y, Yx, G
+
+# P.Rosati  15/6/2015
+
+Aspect: red
+	IconE: NF_r_E.xpm
+	IconW: NF_r_W.xpm
+	IconN: NF_r_N.xpm
+	IconS: NF_r_S.xpm
+	Action: stop
+
+Aspect: shunt
+	IconE: NF_r_E.xpm
+	IconW: NF_r_W.xpm
+	IconN: NF_r_N.xpm
+	IconS: NF_r_S.xpm
+	Action: speedLimit 20
+
+Aspect: yellow
+	IconE: NF_y_E.xpm
+	IconW: NF_y_W.xpm
+	IconN: NF_y_N.xpm
+	IconS: NF_y_S.xpm
+	Action: proceed
+
+Aspect: yellow_flashing
+	IconE: NF_y_E.xpm NF_b_E.xpm
+	IconW: NF_y_W.xpm NF_b_W.xpm
+	IconN: NF_y_N.xpm NF_b_N.xpm
+	IconS: NF_y_S.xpm NF_b_S.xpm
+	Action: proceed
+
+Aspect: green
+	IconE: NF_g_E.xpm
+	IconW: NF_g_W.xpm
+	IconN: NF_g_N.xpm
+	IconS: NF_g_S.xpm
+	Action: proceed
+
+# initial aspect
+
+OnInit:
+	.aspect = red
+end
+
+# user clicked on the signal
+
+OnCleared:
+	if .aspect ! red
+		.aspect = red
+		return
+	end	
+	# Limite che forza la manovra: shunt   -   Speed limit forcing shunt (S)
+	if .nextLimit < 30
+		.aspect = shunt
+		return
+	end
+	# Prosecuzione itinerario: shunt se il segnale dopo è R o S
+	# Route continuation: shunt if next signal is R or S
+	if .nextStation = V 	 	
+		if next.aspect = red or next.aspect = shunt
+			.aspect = shunt
+			return
+		end
+	end
+	# Avvisi che richiedono G - Distants requiring Y follow
+	if nextApproach.aspect = yellow_yellow or nextApproach.aspect = yellow_thrown or nextApproach.aspect = red_thrown or nextApproach.aspect = red_short_thrown or nextApproach.aspect = red or nextApproach.aspect = red_short 
+		.aspect = yellow
+		return
+	end
+	# Avviso = G o avviso di deviata (GV | GxVx | Gx/Vx) richiede Gx o V
+	# A distant at Y or prepare to slow (YG | YxGx | Yx/Gx) requires Yx or G 
+	if nextApproach.aspect = yellow or nextApproach.aspect = yellow_green or nextApproach.aspect = yellow_green_flashing or nextApproach.aspect = yellow_green_switching or nextApproach.aspect = flashing_thrown
+		if nextApproach.nextLength < 1200 or nextApproach.aspect = flashing_thrown
+			.aspect = yellow_flashing
+		else
+			.aspect = green
+		end
+		return
+	end
+	# Avvisi che richiedono V - Distants requiring G follow
+	if nextApproach.aspect = yellow_flashing or nextApproach.aspect = green or nextApproach.aspect = green_thrown
+		.aspect = green
+		return
+	end
+	# Qui l'avviso va ignorato o non c'è: controllo se Prossimo = R o equivalente (S | GG | RGG o 
+	# segnale di partenza) o deviato, anche forzato (segnale incompleto)
+	# Here the following distant is missing or should be ignored: check if next is R or equivalent 
+	# (S | YY | RYY or exit signal) or diverging - even forced (incomplete aspect)
+	if next.aspect = red or next.aspect = shunt or next.aspect = yellow_yellow or next.aspect = red_yellow_yellow or next.switchThrown = 1 or next.nextApproach.script = "rfi_avv_dev.tds" or next.script > "rfi_pars" and next.script < "rfi_paru"
+		.aspect = yellow
+	else 
+		# Prossimo = G o avviso di deviata (GV | GxVx | Gx/Vx)
+		# Next is Y or prepare to slow (YG | YxGx | Yx/Gx)
+		if next.aspect = yellow or next.aspect = yellow_green or next.aspect = yellow_green_flashing or next.aspect = yellow_green_switching
+			if next.nextLength < 1200
+				.aspect = yellow_flashing
+				return
+			end
+		end		
+		# Altri casi (Gx | V), compreso nessun altro segnale (uscita)
+		# Other cases (next is Yx or G), including no more signals (exit point)
+		.aspect = green
+	end
+end
+
+# another signal changed aspect
+
+OnUpdate:
+	# Se R non importa cosa segue: non cambia - If R ignore other signals
+	if .aspect = red 
+		return
+	end
+	# Shunt vero: non cambia - If it's a real shunt ignore other signals
+	if .aspect = shunt
+		if .nextLimit < 30 or .color = white
+			return
+		end
+	end
+	# Prosecuzione itinerario: shunt se il segnale dopo è R o S
+	# Route continuation: shunt if next signal is R or S
+	if .nextStation = V 	 	
+		if next.aspect = red or next.aspect = shunt
+			.aspect = shunt
+			return
+		end
+	end
+	# Avvisi che richiedono G - Distants requiring Y follow
+	if nextApproach.aspect = yellow_yellow or nextApproach.aspect = yellow_thrown or nextApproach.aspect = red_thrown or nextApproach.aspect = red_short_thrown or nextApproach.aspect = red or nextApproach.aspect = red_short 
+		.aspect = yellow
+		return
+	end
+	# Avviso = G o avviso di deviata (GV | GxVx | Gx/Vx) richiede Gx o V
+	# A distant at Y or prepare to slow (YG | YxGx | Yx/Gx) requires Yx or G 
+	if nextApproach.aspect = yellow or nextApproach.aspect = yellow_green or nextApproach.aspect = yellow_green_flashing or nextApproach.aspect = yellow_green_switching or nextApproach.aspect = flashing_thrown
+		if nextApproach.nextLength < 1200 or nextApproach.aspect = flashing_thrown
+			.aspect = yellow_flashing
+		else
+			.aspect = green
+		end
+		return
+	end
+	# Avvisi che richiedono V - Distants requiring G follow
+	if nextApproach.aspect = yellow_flashing or nextApproach.aspect = green or nextApproach.aspect = green_thrown
+		.aspect = green
+		return
+	end
+	# Qui l'avviso va ignorato o non c'è: controllo se Prossimo = R o equivalente (S | GG | RGG o 
+	# segnale di partenza) o deviato, anche forzato (segnale incompleto)
+	# Here the following distant is missing or should be ignored: check if next is R or equivalent 
+	# (S | YY | RYY or exit signal) or diverging - even forced (incomplete aspect)
+	if next.aspect = red or next.aspect = shunt or next.aspect = yellow_yellow or next.aspect = red_yellow_yellow or next.switchThrown = 1 or next.nextApproach.script = "rfi_avv_dev.tds" or next.script > "rfi_pars" and next.script < "rfi_paru"
+		.aspect = yellow
+	else 
+		# Prossimo = G o avviso di deviata (GV | GxVx | Gx/Vx)
+		# Next is Y or prepare to slow (YG | YxGx | Yx/Gx)
+		if next.aspect = yellow or next.aspect = yellow_green or next.aspect = yellow_green_flashing or next.aspect = yellow_green_switching
+			if next.nextLength < 1200
+				.aspect = yellow_flashing
+				return
+			end
+		end		
+		# Altri casi (Gx | V), compreso nessun altro segnale (uscita)
+		# Other cases (next is Yx or G), including no more signals (exit point)
+		.aspect = green
+	end
+end
+
+# user Ctrl-clicked on the signal
+
+OnShunt:
+	if .color = white
+		.aspect = shunt
+	else
+		.aspect = red
+	end
+end

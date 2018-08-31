@@ -1,0 +1,40 @@
+# Segnale sempre rosso (marcare l'apposita opzione) con l'aspetto di un tronchino,
+# per bloccare le uscite; i segnali precedenti lo considerano una via impedita.
+
+# Special always red signal (mark the specific otption in the properties) that 
+# looks like a dead end bumper, used to prevent trains from exiting the scenario.
+# Previous signals will consider this a red (stop).
+
+# P.Rosati  1/12/2013
+
+Aspect: red
+	IconE: TR_E.xpm
+	IconW: TR_W.xpm
+	IconN: TR_N.xpm
+	IconS: TR_S.xpm
+	Action: stop
+
+# initial aspect
+
+OnInit:
+	.aspect = red
+end
+
+# user clicked on the signal
+
+OnCleared:
+	return
+end
+
+# user Ctrl-clicked on the signal
+
+OnShunt:
+	return
+end
+
+# another signal changed aspect
+
+OnUpdate:
+	return
+end
+

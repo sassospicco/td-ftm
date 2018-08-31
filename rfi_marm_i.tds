@@ -1,0 +1,80 @@
+# Segnale basso (marmotta) imperativo a tre aspetti per il binario alla sua destra, per avere 
+# l'aspetto lampeggiante inserire una stazione fittizia 'X' a valle del segnale.
+
+# Aspetti consentiti: _ (red), | (shunt), |x (flashing)
+
+# Shunting dwarf commanding to the right. The flashing aspect isn't for shunting, but indicates 
+# the track which the exit signal that follows is commanding, when that exit signal commands 
+# more than one track. To get this aspect, put a fake 'X' station between this signal and the next.
+
+# Aspects: _ (red), | (shunt), |x (flashing)
+
+# P.Rosati  1/12/2013
+
+Aspect: red
+	IconE: MA_-_E.xpm
+	IconW: MA_-_W.xpm
+	IconN: MA_-_N.xpm
+	IconS: MA_-_S.xpm
+	Action: stop
+
+Aspect: shunt
+	IconE: MA_I_E.xpm
+	IconW: MA_I_W.xpm
+	IconN: MA_I_N.xpm
+	IconS: MA_I_S.xpm
+	Action: speedLimit 20
+
+Aspect: flashing
+	IconE: MA_I_E.xpm MA___E.xpm
+	IconW: MA_I_W.xpm MA___W.xpm
+	IconN: MA_I_N.xpm MA___N.xpm
+	IconS: MA_I_S.xpm MA___S.xpm
+	Action: proceed
+
+# initial aspect
+
+OnInit:
+	.aspect = red
+end
+
+# user clicked on the signal
+
+OnCleared:
+	if .aspect = red
+		if .nextStation = X and next.aspect ! red and next.aspect ! shunt
+			.aspect = flashing
+		else
+			.aspect = shunt
+		end
+	else
+		.aspect = red
+	end
+end
+
+# user Ctrl-clicked on the signal
+
+OnShunt:
+	if .color = white
+		.aspect = shunt
+	else
+		.aspect = red
+	end
+end
+
+# another signal changed aspect
+
+OnUpdate:
+	if .aspect = red
+		return
+	else
+		if .nextStation = X 
+			if next.aspect ! red and next.aspect ! shunt
+				.aspect = flashing
+			else
+				.aspect = shunt
+			end
+		end
+	end
+end
+
