@@ -1991,15 +1991,6 @@ Train: MI78
     Stock: R20
 .
 
-Train: MI80
-    Type: 1 eti400w.xpm eti400e.xpm
-    When: 7
-    Enter: 04:00, DepTrento5
-           04:01, 19:12, DepTrento@5
-           19:22, -, Trento
-    Stock: R46
-.
-
 Train: MI71
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
@@ -2025,12 +2016,13 @@ Train: MU72
     Wait: R46 60
 .
 
-Train: MU71
+Train: MX71
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 11:40, Male
-           14:40, -, DepTrento@2
+           14:40, -, Trento@3
     Wait: R253 60
+    Notes: Invio vuoto Male-Trento
 .
 
 Train: MU73
@@ -2063,4 +2055,1081 @@ Train: MU79
     Enter: 21:44, Trento
            22:14, -, DepTrento@5
     Wait: R35 60
+.
+
+Train: R50
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 06:02, Trento
+           +090+30, +030, Trento Nord
+           +210+30, +030, Gardolo
+           +105+15, +015, Spini ZI
+           +045+15, +015, Lamar
+           +210+30, +030, Lavis
+           +150+30, +030, Zambana
+           +150+30, +030, Nave San Felice
+           +210+30, +030, Grumo
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Mezzocorona Borgata
+           06:34,  06:35, Mezzolombardo
+           +225+15, +015, Masi di Vigo
+           +165+15, +015, Crescino
+           +165+15, +015, Denno
+           +510+30, +030, Mollaro
+           +105+15, +015, Segno
+           +150+30, +030, Taio
+           +210+30, +030, Dermulo
+           +165+15, +015, Tassullo
+           07:11,  07:12, Cles
+           +045+15, +015, Cles Polo Scolastico
+           +285+15, +015, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           07:35,  07:36, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           07:52,      -, Mezzana
+    Wait: MI70 60
+    Stock: R53
+    Notes: Trento-Mezzana
+.
+
+Train: R250
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 09:00, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           09:16,      -, Mezzana
+    Wait: MI72 60
+    Stock: R251
+    Notes: Male-Mezzana
+.
+
+Train: R8
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 08:10, Trento
+           +090+30, +030, Trento Nord
+           +210+30, +030, Gardolo
+           +105+15, +015, Spini ZI
+           +045+15, +015, Lamar
+           +210+30, +030, Lavis
+           +150+30, +030, Zambana
+           +150+30, +030, Nave San Felice
+           +210+30, +030, Grumo
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Mezzocorona Borgata
+           08:45,  08:47, Mezzolombardo
+           +225+15, +015, Masi di Vigo
+           +165+15, +015, Crescino
+           +165+15, +015, Denno
+           +510+30, +030, Mollaro
+           +105+15, +015, Segno
+           +150+30, +030, Taio
+           +210+30, +030, Dermulo
+           +165+15, +015, Tassullo
+           09:22,  09:24, Cles
+           +045+15, +015, Cles Polo Scolastico
+           +285+15, +015, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           09:50,  09:52, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           10:08,      -, Mezzana
+    Wait: MI74 60
+    Stock: R15
+    Notes: Trento-Mezzana con capienza per 18 bici
+.
+
+Train: R252
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 10:45, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           11:01,      -, Mezzana
+    Wait: R251 60
+    Stock: R253
+    Notes: Male-Mezzana
+.
+
+Train: R12
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 10:25, Trento
+           +090+30, +030, Trento Nord
+           +210+30, +030, Gardolo
+           +105+15, +015, Spini ZI
+           +045+15, +015, Lamar
+           +210+30, +030, Lavis
+           +150+30, +030, Zambana
+           +150+30, +030, Nave San Felice
+           +210+30, +030, Grumo
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Mezzocorona Borgata
+           10:58,  11:00, Mezzolombardo
+           +225+15, +015, Masi di Vigo
+           +165+15, +015, Crescino
+           +165+15, +015, Denno
+           +510+30, +030, Mollaro
+           +105+15, +015, Segno
+           +150+30, +030, Taio
+           +210+30, +030, Dermulo
+           +165+15, +015, Tassullo
+           11:35,  11:36, Cles
+           +045+15, +015, Cles Polo Scolastico
+           +285+15, +015, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           12:01,  12:03, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           12:19,      -, Mezzana
+    Wait: R51 60
+    Stock: R19
+    Notes: Trento-Mezzana
+.
+
+Train: R212
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 12:17, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           12:34,  12:50, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           13:07,      -, Mezzana
+    Wait: MI76 60
+    Stock: R213
+    Notes: Mostizzolo-Mezzana con capienza per 60 bici
+.
+
+Train: R16
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 12:00, Trento
+           +090+30, +030, Trento Nord
+           +210+30, +030, Gardolo
+           +105+15, +015, Spini ZI
+           +045+15, +015, Lamar
+           +210+30, +030, Lavis
+           +150+30, +030, Zambana
+           +150+30, +030, Nave San Felice
+           +210+30, +030, Grumo
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Mezzocorona Borgata
+           12:32,  12:34, Mezzolombardo
+           +225+15, +015, Masi di Vigo
+           +165+15, +015, Crescino
+           +165+15, +015, Denno
+           +510+30, +030, Mollaro
+           +105+15, +015, Segno
+           +150+30, +030, Taio
+           +210+30, +030, Dermulo
+           +165+15, +015, Tassullo
+           13:11,  13:15, Cles
+           +045+15, +015, Cles Polo Scolastico
+           +285+15, +015, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           13:38,  13:40, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           13:56,      -, Mezzana
+    Wait: R53 60
+    Stock: R23
+    Notes: Trento-Mezzana
+.
+
+Train: R214
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 14:09, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           14:26,  14:28, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           14:45,      -, Mezzana
+    Wait: R213 60
+    Stock: R215
+    Notes: Mostizzolo-Mezzana con capienza per 60 bici
+.
+
+Train: R20
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 13:40, Trento
+           +090+30, +030, Trento Nord
+           +210+30, +030, Gardolo
+           +105+15, +015, Spini ZI
+           +045+15, +015, Lamar
+           +210+30, +030, Lavis
+           +150+30, +030, Zambana
+           +150+30, +030, Nave San Felice
+           +210+30, +030, Grumo
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Mezzocorona Borgata
+           14:14,  14:16, Mezzolombardo
+           +225+15, +015, Masi di Vigo
+           +165+15, +015, Crescino
+           +165+15, +015, Denno
+           +510+30, +030, Mollaro
+           +105+15, +015, Segno
+           +150+30, +030, Taio
+           +210+30, +030, Dermulo
+           +165+15, +015, Tassullo
+           14:51,  14:53, Cles
+           +045+15, +015, Cles Polo Scolastico
+           +285+15, +015, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           15:18,  15:20, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           15:37,      -, Mezzana
+    Wait: MI78 60
+    Stock: R29
+    Notes: Trento-Mezzana
+.
+
+Train: R216
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 15:50, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           16:07,  16:09, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           16:26,      -, Mezzana
+    Wait: R215 60
+    Stock: R217
+    Notes: Mostizzolo-Mezzana con capienza per 60 bici
+.
+
+Train: R24
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 14:54, Trento
+           +090+30, +030, Trento Nord
+           +210+30, +030, Gardolo
+           +105+15, +015, Spini ZI
+           +045+15, +015, Lamar
+           +210+30, +030, Lavis
+           +150+30, +030, Zambana
+           +150+30, +030, Nave San Felice
+           +210+30, +030, Grumo
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Mezzocorona Borgata
+           15:27,  15:29, Mezzolombardo
+           +225+15, +015, Masi di Vigo
+           +165+15, +015, Crescino
+           +165+15, +015, Denno
+           +510+30, +030, Mollaro
+           +105+15, +015, Segno
+           +150+30, +030, Taio
+           +210+30, +030, Dermulo
+           +165+15, +015, Tassullo
+           16:05,  16:07, Cles
+           +045+15, +015, Cles Polo Scolastico
+           +285+15, +015, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           16:34,  16:41, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           16:58,      -, Mezzana
+    Wait: R15 60
+    Stock: R31
+    Notes: Trento-Mezzana con capienza per 18 bici
+.
+
+Train: R218
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 17:39, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           17:57,  18:11, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           18:28,      -, Mezzana
+    Wait: R217 60
+    Stock: R219
+    Notes: Mostizzolo-Mezzana con capienza per 60 bici
+.
+
+Train: R42
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 16:32, Trento
+           +090+30, +030, Trento Nord
+           +210+30, +030, Gardolo
+           +105+15, +015, Spini ZI
+           +045+15, +015, Lamar
+           +210+30, +030, Lavis
+           +150+30, +030, Zambana
+           +150+30, +030, Nave San Felice
+           +210+30, +030, Grumo
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Mezzocorona Borgata
+           17:04,  17:05, Mezzolombardo
+           +225+15, +015, Masi di Vigo
+           +165+15, +015, Crescino
+           +165+15, +015, Denno
+           +510+30, +030, Mollaro
+           +105+15, +015, Segno
+           +150+30, +030, Taio
+           +210+30, +030, Dermulo
+           +165+15, +015, Tassullo
+           17:41,  17:43, Cles
+           +045+15, +015, Cles Polo Scolastico
+           +285+15, +015, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           18:08,      -, Male
+    Wait: R19 60
+    Stock: R33
+    Notes: Trento-Male
+.
+
+Train: R64
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 17:26, Trento
+           +090+30, +030, Trento Nord
+           +210+30, +030, Gardolo
+           +105+15, +015, Spini ZI
+           +045+15, +015, Lamar
+           +210+30, +030, Lavis
+           +150+30, +030, Zambana
+           +150+30, +030, Nave San Felice
+           +210+30, +030, Grumo
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Mezzocorona Borgata
+           17:59,  18:01, Mezzolombardo
+           +225+15, +015, Masi di Vigo
+           +165+15, +015, Crescino
+           +165+15, +015, Denno
+           +510+30, +030, Mollaro
+           +105+15, +015, Segno
+           +150+30, +030, Taio
+           +210+30, +030, Dermulo
+           +165+15, +015, Tassullo
+           18:36,  18:37, Cles
+           +045+15, +015, Cles Polo Scolastico
+           +285+15, +015, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           19:02,  19:03, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           19:19,      -, Mezzana
+    Wait: R23 60
+    Stock: R35
+    Notes: Trento-Mezzana
+.
+
+Train: R34
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 18:36, Trento
+           +090+30, +030, Trento Nord
+           +210+30, +030, Gardolo
+           +105+15, +015, Spini ZI
+           +045+15, +015, Lamar
+           +210+30, +030, Lavis
+           +150+30, +030, Zambana
+           +150+30, +030, Nave San Felice
+           +210+30, +030, Grumo
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Mezzocorona Borgata
+           19:09,  19:11, Mezzolombardo
+           +225+15, +015, Masi di Vigo
+           +165+15, +015, Crescino
+           +165+15, +015, Denno
+           +510+30, +030, Mollaro
+           +105+15, +015, Segno
+           +150+30, +030, Taio
+           +210+30, +030, Dermulo
+           +165+15, +015, Tassullo
+           19:47,  19:48, Cles
+           +045+15, +015, Cles Polo Scolastico
+           +285+15, +015, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           20:12,  20:14, Male
+           +105+15, +015, Croviana
+           +105+15, +015, Monclassico
+           +165+15, +015, Dimaro
+           +105+15, +015, Mastellina
+           +105+15, +015, Daolasa
+           +045+15, +015, Piano
+           +105+15, +015, Marilleva
+           20:30,      -, Mezzana
+    Wait: R29 60
+    Stock: MU70
+    Notes: Trento-Mezzana
+.
+
+Train: R46
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 19:32, Trento
+           +090+30, +030, Trento Nord
+           +210+30, +030, Gardolo
+           +105+15, +015, Spini ZI
+           +045+15, +015, Lamar
+           +210+30, +030, Lavis
+           +150+30, +030, Zambana
+           +150+30, +030, Nave San Felice
+           +210+30, +030, Grumo
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Mezzocorona Borgata
+           20:04,  20:05, Mezzolombardo
+           +225+15, +015, Masi di Vigo
+           +165+15, +015, Crescino
+           +165+15, +015, Denno
+           +510+30, +030, Mollaro
+           +105+15, +015, Segno
+           +150+30, +030, Taio
+           +210+30, +030, Dermulo
+           +165+15, +015, Tassullo
+           20:40,  20:41, Cles
+           +045+15, +015, Cles Polo Scolastico
+           +285+15, +015, Mostizzolo
+           +225+15, +015, Bozzana
+           +105+15, +015, Tozzaga
+           +045+15, +015, Cassana
+           +045+15, +015, Cavizzana
+           +165+15, +015, Caldes
+           +165+15, +015, Terzolas
+           21:04,      -, Male
+    Wait: MX71 60
+    Stock: MU72
+    Notes: Trento-Male
+.
+
+Train: R51
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 05:55, Male
+           +165+15, +015, Terzolas
+           +165+15, +015, Caldes
+           +045+15, +015, Cavizzana
+           +105+15, +015, Cassana
+           +105+15, +015, Tozzaga
+           +165+15, +015, Bozzana
+           +225+15, +015, Mostizzolo
+           +165+15, +015, Cles Polo Scolastico
+           06:18,  06:19, Cles
+           +285+15, +015, Tassullo
+           +210+30, +030, Dermulo
+           +150+30, +030, Taio
+           +165+15, +015, Segno
+           +150+30, +030, Mollaro
+           +465+15, +015, Denno
+           +165+15, +015, Crescino
+           +045+15, +015, Masi di Vigo
+           06:55,  06:56, Mezzolombardo
+           +210+30, +030, Mezzocorona Borgata
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Grumo
+           +210+30, +030, Nave San Felice
+           +150+30, +030, Zambana
+           +150+30, +030, Lavis
+           +105+15, +015, Lamar
+           +045+15, +015, Spini ZI
+           +210+30, +030, Gardolo
+           +090+30, +030, Trento Nord
+           07:29,      -, Trento
+    Wait: MI71 60
+    Stock: R12
+    Notes: Male-Trento
+.
+
+Train: R53
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 08:06, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           08:23,  08:24, Male
+           +165+15, +015, Terzolas
+           +165+15, +015, Caldes
+           +045+15, +015, Cavizzana
+           +105+15, +015, Cassana
+           +105+15, +015, Tozzaga
+           +165+15, +015, Bozzana
+           +225+15, +015, Mostizzolo
+           +165+15, +015, Cles Polo Scolastico
+           08:47,  08:48, Cles
+           +285+15, +015, Tassullo
+           +210+30, +030, Dermulo
+           +150+30, +030, Taio
+           +165+15, +015, Segno
+           +150+30, +030, Mollaro
+           +465+15, +015, Denno
+           +165+15, +015, Crescino
+           +045+15, +015, Masi di Vigo
+           09:23,  09:25, Mezzolombardo
+           +210+30, +030, Mezzocorona Borgata
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Grumo
+           +210+30, +030, Nave San Felice
+           +150+30, +030, Zambana
+           +150+30, +030, Lavis
+           +105+15, +015, Lamar
+           +045+15, +015, Spini ZI
+           +210+30, +030, Gardolo
+           +090+30, +030, Trento Nord
+           09:58,      -, Trento
+    Wait: R50 60
+    Stock: R16
+    Notes: Mezzana-Trento
+.
+
+Train: R251
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 09:28, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           09:45,      -, Male
+    Wait: R250 60
+    Stock: R252
+    Notes: Mezzana-Male
+.
+
+Train: R15
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 10:26, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           10:44,  10:54, Male
+           +165+15, +015, Terzolas
+           +165+15, +015, Caldes
+           +045+15, +015, Cavizzana
+           +105+15, +015, Cassana
+           +105+15, +015, Tozzaga
+           +165+15, +015, Bozzana
+           +225+15, +015, Mostizzolo
+           +165+15, +015, Cles Polo Scolastico
+           11:18,  11:20, Cles
+           +285+15, +015, Tassullo
+           +210+30, +030, Dermulo
+           +150+30, +030, Taio
+           +165+15, +015, Segno
+           +150+30, +030, Mollaro
+           +465+15, +015, Denno
+           +165+15, +015, Crescino
+           +045+15, +015, Masi di Vigo
+           11:58,  12:00, Mezzolombardo
+           +210+30, +030, Mezzocorona Borgata
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Grumo
+           +210+30, +030, Nave San Felice
+           +150+30, +030, Zambana
+           +150+30, +030, Lavis
+           +105+15, +015, Lamar
+           +045+15, +015, Spini ZI
+           +210+30, +030, Gardolo
+           +090+30, +030, Trento Nord
+           12:33,      -, Trento
+    Wait: R8 60
+    Stock: R24
+    Notes: Mezzana-Trento con capienza per 18 bici
+.
+
+Train: R253
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 11:13, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           11:30,      -, Male
+    Wait: R252 60
+    Stock: MX71
+    Notes: Mezzana-Male
+.
+
+Train: R19
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 12:32, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           12:49,  12:51, Male
+           +165+15, +015, Terzolas
+           +165+15, +015, Caldes
+           +045+15, +015, Cavizzana
+           +105+15, +015, Cassana
+           +105+15, +015, Tozzaga
+           +165+15, +015, Bozzana
+           +225+15, +015, Mostizzolo
+           +165+15, +015, Cles Polo Scolastico
+           13:14,  13:16, Cles
+           +285+15, +015, Tassullo
+           +210+30, +030, Dermulo
+           +150+30, +030, Taio
+           +165+15, +015, Segno
+           +150+30, +030, Mollaro
+           +465+15, +015, Denno
+           +165+15, +015, Crescino
+           +045+15, +015, Masi di Vigo
+           13:53,  13:55, Mezzolombardo
+           +210+30, +030, Mezzocorona Borgata
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Grumo
+           +210+30, +030, Nave San Felice
+           +150+30, +030, Zambana
+           +150+30, +030, Lavis
+           +105+15, +015, Lamar
+           +045+15, +015, Spini ZI
+           +210+30, +030, Gardolo
+           +090+30, +030, Trento Nord
+           14:29,      -, Trento
+    Wait: R12 60
+    Stock: R42
+    Notes: Mezzana-Trento
+.
+
+Train: R213
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 13:21, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           13:39,  13:41, Male
+           13:54,      -, Mostizzolo
+    Wait: R212 60
+    Stock: R214
+    Notes: Mezzana-Mostizzolo con capienza per 60 bici
+.
+
+Train: R23
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 14:24, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           14:42,  14:43, Male
+           +165+15, +015, Terzolas
+           +165+15, +015, Caldes
+           +045+15, +015, Cavizzana
+           +105+15, +015, Cassana
+           +105+15, +015, Tozzaga
+           +165+15, +015, Bozzana
+           +225+15, +015, Mostizzolo
+           +165+15, +015, Cles Polo Scolastico
+           15:07,  15:09, Cles
+           +285+15, +015, Tassullo
+           +210+30, +030, Dermulo
+           +150+30, +030, Taio
+           +165+15, +015, Segno
+           +150+30, +030, Mollaro
+           +465+15, +015, Denno
+           +165+15, +015, Crescino
+           +045+15, +015, Masi di Vigo
+           15:45,  15:47, Mezzolombardo
+           +210+30, +030, Mezzocorona Borgata
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Grumo
+           +210+30, +030, Nave San Felice
+           +150+30, +030, Zambana
+           +150+30, +030, Lavis
+           +105+15, +015, Lamar
+           +045+15, +015, Spini ZI
+           +210+30, +030, Gardolo
+           +090+30, +030, Trento Nord
+           16:20,      -, Trento
+    Wait: R16 60
+    Stock: R64
+    Notes: Mezzana-Trento
+.
+
+Train: R215
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 15:01, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           15:19,  15:21, Male
+           15:34,      -, Mostizzolo
+    Wait: R214 60
+    Stock: R216
+    Notes: Mezzana-Mostizzolo con capienza per 60 bici
+.
+
+Train: R29
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 16:07, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           16:25,  16:42, Male
+           +165+15, +015, Terzolas
+           +165+15, +015, Caldes
+           +045+15, +015, Cavizzana
+           +105+15, +015, Cassana
+           +105+15, +015, Tozzaga
+           +165+15, +015, Bozzana
+           +225+15, +015, Mostizzolo
+           +165+15, +015, Cles Polo Scolastico
+           17:05,  17:07, Cles
+           +285+15, +015, Tassullo
+           +210+30, +030, Dermulo
+           +150+30, +030, Taio
+           +165+15, +015, Segno
+           +150+30, +030, Mollaro
+           +465+15, +015, Denno
+           +165+15, +015, Crescino
+           +045+15, +015, Masi di Vigo
+           17:44,  17:46, Mezzolombardo
+           +210+30, +030, Mezzocorona Borgata
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Grumo
+           +210+30, +030, Nave San Felice
+           +150+30, +030, Zambana
+           +150+30, +030, Lavis
+           +105+15, +015, Lamar
+           +045+15, +015, Spini ZI
+           +210+30, +030, Gardolo
+           +090+30, +030, Trento Nord
+           18:20,      -, Trento
+    Wait: R20 60
+    Stock: R34
+    Notes: Mezzana-Trento
+.
+
+Train: R217
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 16:39, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           16:57,  16:58, Male
+           17:15,      -, Mostizzolo
+    Wait: R216 60
+    Stock: R218
+    Notes: Mezzana-Mostizzolo con capienza per 60 bici
+.
+
+Train: R31
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 17:11, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           17:28,  17:30, Male
+           +165+15, +015, Terzolas
+           +165+15, +015, Caldes
+           +045+15, +015, Cavizzana
+           +105+15, +015, Cassana
+           +105+15, +015, Tozzaga
+           +165+15, +015, Bozzana
+           +225+15, +015, Mostizzolo
+           +165+15, +015, Cles Polo Scolastico
+           17:58,  18:10, Cles
+           +285+15, +015, Tassullo
+           +210+30, +030, Dermulo
+           +150+30, +030, Taio
+           +165+15, +015, Segno
+           +150+30, +030, Mollaro
+           +465+15, +015, Denno
+           +165+15, +015, Crescino
+           +045+15, +015, Masi di Vigo
+           18:39,  18:42, Mezzolombardo
+           +210+30, +030, Mezzocorona Borgata
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Grumo
+           +210+30, +030, Nave San Felice
+           +150+30, +030, Zambana
+           +150+30, +030, Lavis
+           +105+15, +015, Lamar
+           +045+15, +015, Spini ZI
+           +210+30, +030, Gardolo
+           +090+30, +030, Trento Nord
+           19:16,      -, Trento
+    Wait: R24 60
+    Stock: MU73
+    Notes: Mezzana-Trento con capienza per 18 bici
+.
+
+Train: R33
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 18:25, Male
+           +165+15, +015, Terzolas
+           +165+15, +015, Caldes
+           +045+15, +015, Cavizzana
+           +105+15, +015, Cassana
+           +105+15, +015, Tozzaga
+           +165+15, +015, Bozzana
+           +225+15, +015, Mostizzolo
+           +165+15, +015, Cles Polo Scolastico
+           18:52,  18:54, Cles
+           +285+15, +015, Tassullo
+           +210+30, +030, Dermulo
+           +150+30, +030, Taio
+           +165+15, +015, Segno
+           +150+30, +030, Mollaro
+           +465+15, +015, Denno
+           +165+15, +015, Crescino
+           +045+15, +015, Masi di Vigo
+           19:30,  19:32, Mezzolombardo
+           +210+30, +030, Mezzocorona Borgata
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Grumo
+           +210+30, +030, Nave San Felice
+           +150+30, +030, Zambana
+           +150+30, +030, Lavis
+           +105+15, +015, Lamar
+           +045+15, +015, Spini ZI
+           +210+30, +030, Gardolo
+           +090+30, +030, Trento Nord
+           20:05,      -, Trento
+    Wait: R42 60
+    Stock: MU75
+    Notes: Male-Trento
+.
+
+Train: R219
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 18:40, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           18:58,      -, Male
+    Wait: R218 60
+    Stock: MU77
+    Notes: Mezzana-Male con capienza per 60 bici
+.
+
+Train: R35
+    Type: 1 eti400w.xpm eti400e.xpm
+    When: 7
+    Enter: 19:34, Mezzana
+           +045+15, +015, Marilleva
+           +105+15, +015, Piano
+           +105+15, +015, Daolasa
+           +105+15, +015, Mastellina
+           +165+15, +015, Dimaro
+           +105+15, +015, Monclassico
+           +105+15, +015, Croviana
+           19:51,  20:00, Male
+           +165+15, +015, Terzolas
+           +165+15, +015, Caldes
+           +045+15, +015, Cavizzana
+           +105+15, +015, Cassana
+           +105+15, +015, Tozzaga
+           +165+15, +015, Bozzana
+           +225+15, +015, Mostizzolo
+           +165+15, +015, Cles Polo Scolastico
+           20:24,  20:25, Cles
+           +285+15, +015, Tassullo
+           +210+30, +030, Dermulo
+           +150+30, +030, Taio
+           +165+15, +015, Segno
+           +150+30, +030, Mollaro
+           +465+15, +015, Denno
+           +165+15, +015, Crescino
+           +045+15, +015, Masi di Vigo
+           21:00,  21:01, Mezzolombardo
+           +210+30, +030, Mezzocorona Borgata
+           +150+30, +030, Mezzocorona Ferrovia
+           +150+30, +030, Grumo
+           +210+30, +030, Nave San Felice
+           +150+30, +030, Zambana
+           +150+30, +030, Lavis
+           +105+15, +015, Lamar
+           +045+15, +015, Spini ZI
+           +210+30, +030, Gardolo
+           +090+30, +030, Trento Nord
+           21:34,      -, Trento
+    Wait: R64 60
+    Stock: MU79
+    Notes: Mezzana-Trento
 .
