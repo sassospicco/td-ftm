@@ -1952,7 +1952,7 @@ Train: MI70
     Enter: 04:00, DepTrento2
            04:01, 05:42, DepTrento@2
            05:52, -, Trento
-    Stock: R50
+    Stock: F50
 .
 
 Train: MI72
@@ -1961,7 +1961,7 @@ Train: MI72
     Enter: 04:00, DepCroviana3
            04:01, 08:35, DepCroviana@3
            08:50, -, Male
-    Stock: R250
+    Stock: F250
 .
 
 Train: MI74
@@ -1970,7 +1970,7 @@ Train: MI74
     Enter: 04:00, DepTrento3
            04:01, 07:50, DepTrento@3
            08:00, -, Trento
-    Stock: R8
+    Stock: F8
 .
 
 Train: MI76
@@ -1979,7 +1979,7 @@ Train: MI76
     Enter: 04:00, DepCroviana4
            04:01, 11:52, DepCroviana@4
            12:07, -, Mostizzolo
-    Stock: R212
+    Stock: F212
 .
 
 Train: MI78
@@ -1988,7 +1988,7 @@ Train: MI78
     Enter: 04:00, DepTrento4
            04:01, 13:20, DepTrento@4
            13:30, -, Trento
-    Stock: R20
+    Stock: F20
 .
 
 Train: MI71
@@ -1997,7 +1997,7 @@ Train: MI71
     Enter: 04:00, DepCroviana5
            04:01, 05:30, DepCroviana@5
            05:45, -, Male
-    Stock: R51
+    Stock: F51
 .
 
 Train: MU70
@@ -2005,7 +2005,7 @@ Train: MU70
     When: 7
     Enter: 20:40, Mezzana
            21:10, -, DepCroviana@3
-    Wait: R34 60
+    Wait: F34 60
 .
 
 Train: MU72
@@ -2013,7 +2013,7 @@ Train: MU72
     When: 7
     Enter: 21:14, Male
            21:44, -, DepCroviana@4
-    Wait: R46 60
+    Wait: F46 60
 .
 
 Train: MX71
@@ -2021,7 +2021,7 @@ Train: MX71
     When: 7
     Enter: 11:40, Male
            14:40, -, Trento@3
-    Wait: R253 60
+    Wait: F253 60
     Notes: Invio vuoto Male-Trento
 .
 
@@ -2030,7 +2030,7 @@ Train: MU73
     When: 7
     Enter: 19:26, Trento
            19:56, -, DepTrento@3
-    Wait: R31 60
+    Wait: F31 60
 .
 
 Train: MU75
@@ -2038,7 +2038,7 @@ Train: MU75
     When: 7
     Enter: 20:15, Trento
            20:45, -, DepTrento@4
-    Wait: R33 60
+    Wait: F33 60
 .
 
 Train: MU77
@@ -2046,7 +2046,7 @@ Train: MU77
     When: 7
     Enter: 19:08, Male
            19:38, -, DepCroviana@5
-    Wait: R219 60
+    Wait: F219 60
 .
 
 Train: MU79
@@ -2054,10 +2054,10 @@ Train: MU79
     When: 7
     Enter: 21:44, Trento
            22:14, -, DepTrento@5
-    Wait: R35 60
+    Wait: F35 60
 .
 
-Train: R50
+Train: F50
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 06:02, Trento
@@ -2099,11 +2099,11 @@ Train: R50
            +105+15, +015, Marilleva
            07:52,      -, Mezzana
     Wait: MI70 60
-    Stock: R53
+    Stock: F53
     Notes: Trento-Mezzana
 .
 
-Train: R250
+Train: F250
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 09:00, Male
@@ -2116,11 +2116,11 @@ Train: R250
            +105+15, +015, Marilleva
            09:16,      -, Mezzana
     Wait: MI72 60
-    Stock: R251
+    Stock: F251
     Notes: Male-Mezzana
 .
 
-Train: R8
+Train: F8
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 08:10, Trento
@@ -2162,11 +2162,11 @@ Train: R8
            +105+15, +015, Marilleva
            10:08,      -, Mezzana
     Wait: MI74 60
-    Stock: R15
+    Stock: F15
     Notes: Trento-Mezzana con capienza per 18 bici
 .
 
-Train: R252
+Train: F252
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 10:45, Male
@@ -2178,12 +2178,12 @@ Train: R252
            +045+15, +015, Piano
            +105+15, +015, Marilleva
            11:01,      -, Mezzana
-    Wait: R251 60
-    Stock: R253
+    Wait: F251 60
+    Stock: F253
     Notes: Male-Mezzana
 .
 
-Train: R12
+Train: F12
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 10:25, Trento
@@ -2224,12 +2224,12 @@ Train: R12
            +045+15, +015, Piano
            +105+15, +015, Marilleva
            12:19,      -, Mezzana
-    Wait: R51 60
-    Stock: R19
+    Wait: F51 60
+    Stock: F19
     Notes: Trento-Mezzana
 .
 
-Train: R212
+Train: F212
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 12:17, Mostizzolo
@@ -2249,11 +2249,11 @@ Train: R212
            +105+15, +015, Marilleva
            13:07,      -, Mezzana
     Wait: MI76 60
-    Stock: R213
+    Stock: F213
     Notes: Mostizzolo-Mezzana con capienza per 60 bici
 .
 
-Train: R16
+Train: F16
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 12:00, Trento
@@ -2294,12 +2294,12 @@ Train: R16
            +045+15, +015, Piano
            +105+15, +015, Marilleva
            13:56,      -, Mezzana
-    Wait: R53 60
-    Stock: R23
+    Wait: F53 60
+    Stock: F23
     Notes: Trento-Mezzana
 .
 
-Train: R214
+Train: F214
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 14:09, Mostizzolo
@@ -2318,12 +2318,12 @@ Train: R214
            +045+15, +015, Piano
            +105+15, +015, Marilleva
            14:45,      -, Mezzana
-    Wait: R213 60
-    Stock: R215
+    Wait: F213 60
+    Stock: F215
     Notes: Mostizzolo-Mezzana con capienza per 60 bici
 .
 
-Train: R20
+Train: F20
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 13:40, Trento
@@ -2365,11 +2365,11 @@ Train: R20
            +105+15, +015, Marilleva
            15:37,      -, Mezzana
     Wait: MI78 60
-    Stock: R29
+    Stock: F29
     Notes: Trento-Mezzana
 .
 
-Train: R216
+Train: F216
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 15:50, Mostizzolo
@@ -2388,12 +2388,12 @@ Train: R216
            +045+15, +015, Piano
            +105+15, +015, Marilleva
            16:26,      -, Mezzana
-    Wait: R215 60
-    Stock: R217
+    Wait: F215 60
+    Stock: F217
     Notes: Mostizzolo-Mezzana con capienza per 60 bici
 .
 
-Train: R24
+Train: F24
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 14:54, Trento
@@ -2434,12 +2434,12 @@ Train: R24
            +045+15, +015, Piano
            +105+15, +015, Marilleva
            16:58,      -, Mezzana
-    Wait: R15 60
-    Stock: R31
+    Wait: F15 60
+    Stock: F31
     Notes: Trento-Mezzana con capienza per 18 bici
 .
 
-Train: R218
+Train: F218
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 17:39, Mostizzolo
@@ -2458,12 +2458,12 @@ Train: R218
            +045+15, +015, Piano
            +105+15, +015, Marilleva
            18:28,      -, Mezzana
-    Wait: R217 60
-    Stock: R219
+    Wait: F217 60
+    Stock: F219
     Notes: Mostizzolo-Mezzana con capienza per 60 bici
 .
 
-Train: R42
+Train: F42
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 16:32, Trento
@@ -2496,12 +2496,12 @@ Train: R42
            +165+15, +015, Caldes
            +165+15, +015, Terzolas
            18:08,      -, Male
-    Wait: R19 60
-    Stock: R33
+    Wait: F19 60
+    Stock: F33
     Notes: Trento-Male
 .
 
-Train: R64
+Train: F64
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 17:26, Trento
@@ -2542,12 +2542,12 @@ Train: R64
            +045+15, +015, Piano
            +105+15, +015, Marilleva
            19:19,      -, Mezzana
-    Wait: R23 60
-    Stock: R35
+    Wait: F23 60
+    Stock: F35
     Notes: Trento-Mezzana
 .
 
-Train: R34
+Train: F34
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 18:36, Trento
@@ -2588,12 +2588,12 @@ Train: R34
            +045+15, +015, Piano
            +105+15, +015, Marilleva
            20:30,      -, Mezzana
-    Wait: R29 60
+    Wait: F29 60
     Stock: MU70
     Notes: Trento-Mezzana
 .
 
-Train: R46
+Train: F46
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 19:32, Trento
@@ -2631,7 +2631,7 @@ Train: R46
     Notes: Trento-Male
 .
 
-Train: R51
+Train: F51
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 05:55, Male
@@ -2665,11 +2665,11 @@ Train: R51
            +090+30, +030, Trento Nord
            07:29,      -, Trento
     Wait: MI71 60
-    Stock: R12
+    Stock: F12
     Notes: Male-Trento
 .
 
-Train: R53
+Train: F53
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 08:06, Mezzana
@@ -2710,12 +2710,12 @@ Train: R53
            +210+30, +030, Gardolo
            +090+30, +030, Trento Nord
            09:58,      -, Trento
-    Wait: R50 60
-    Stock: R16
+    Wait: F50 60
+    Stock: F16
     Notes: Mezzana-Trento
 .
 
-Train: R251
+Train: F251
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 09:28, Mezzana
@@ -2727,12 +2727,12 @@ Train: R251
            +105+15, +015, Monclassico
            +105+15, +015, Croviana
            09:45,      -, Male
-    Wait: R250 60
-    Stock: R252
+    Wait: F250 60
+    Stock: F252
     Notes: Mezzana-Male
 .
 
-Train: R15
+Train: F15
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 10:26, Mezzana
@@ -2773,12 +2773,12 @@ Train: R15
            +210+30, +030, Gardolo
            +090+30, +030, Trento Nord
            12:33,      -, Trento
-    Wait: R8 60
-    Stock: R24
+    Wait: F8 60
+    Stock: F24
     Notes: Mezzana-Trento con capienza per 18 bici
 .
 
-Train: R253
+Train: F253
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 11:13, Mezzana
@@ -2790,12 +2790,12 @@ Train: R253
            +105+15, +015, Monclassico
            +105+15, +015, Croviana
            11:30,      -, Male
-    Wait: R252 60
+    Wait: F252 60
     Stock: MX71
     Notes: Mezzana-Male
 .
 
-Train: R19
+Train: F19
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 12:32, Mezzana
@@ -2836,12 +2836,12 @@ Train: R19
            +210+30, +030, Gardolo
            +090+30, +030, Trento Nord
            14:29,      -, Trento
-    Wait: R12 60
-    Stock: R42
+    Wait: F12 60
+    Stock: F42
     Notes: Mezzana-Trento
 .
 
-Train: R213
+Train: F213
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 13:21, Mezzana
@@ -2854,12 +2854,12 @@ Train: R213
            +105+15, +015, Croviana
            13:39,  13:41, Male
            13:54,      -, Mostizzolo
-    Wait: R212 60
-    Stock: R214
+    Wait: F212 60
+    Stock: F214
     Notes: Mezzana-Mostizzolo con capienza per 60 bici
 .
 
-Train: R23
+Train: F23
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 14:24, Mezzana
@@ -2900,12 +2900,12 @@ Train: R23
            +210+30, +030, Gardolo
            +090+30, +030, Trento Nord
            16:20,      -, Trento
-    Wait: R16 60
-    Stock: R64
+    Wait: F16 60
+    Stock: F64
     Notes: Mezzana-Trento
 .
 
-Train: R215
+Train: F215
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 15:01, Mezzana
@@ -2918,12 +2918,12 @@ Train: R215
            +105+15, +015, Croviana
            15:19,  15:21, Male
            15:34,      -, Mostizzolo
-    Wait: R214 60
-    Stock: R216
+    Wait: F214 60
+    Stock: F216
     Notes: Mezzana-Mostizzolo con capienza per 60 bici
 .
 
-Train: R29
+Train: F29
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 16:07, Mezzana
@@ -2964,12 +2964,12 @@ Train: R29
            +210+30, +030, Gardolo
            +090+30, +030, Trento Nord
            18:20,      -, Trento
-    Wait: R20 60
-    Stock: R34
+    Wait: F20 60
+    Stock: F34
     Notes: Mezzana-Trento
 .
 
-Train: R217
+Train: F217
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 16:39, Mezzana
@@ -2982,12 +2982,12 @@ Train: R217
            +105+15, +015, Croviana
            16:57,  16:58, Male
            17:15,      -, Mostizzolo
-    Wait: R216 60
-    Stock: R218
+    Wait: F216 60
+    Stock: F218
     Notes: Mezzana-Mostizzolo con capienza per 60 bici
 .
 
-Train: R31
+Train: F31
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 17:11, Mezzana
@@ -3028,12 +3028,12 @@ Train: R31
            +210+30, +030, Gardolo
            +090+30, +030, Trento Nord
            19:16,      -, Trento
-    Wait: R24 60
+    Wait: F24 60
     Stock: MU73
     Notes: Mezzana-Trento con capienza per 18 bici
 .
 
-Train: R33
+Train: F33
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 18:25, Male
@@ -3066,12 +3066,12 @@ Train: R33
            +210+30, +030, Gardolo
            +090+30, +030, Trento Nord
            20:05,      -, Trento
-    Wait: R42 60
+    Wait: F42 60
     Stock: MU75
     Notes: Male-Trento
 .
 
-Train: R219
+Train: F219
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 18:40, Mezzana
@@ -3083,12 +3083,12 @@ Train: R219
            +105+15, +015, Monclassico
            +105+15, +015, Croviana
            18:58,      -, Male
-    Wait: R218 60
+    Wait: F218 60
     Stock: MU77
     Notes: Mezzana-Male con capienza per 60 bici
 .
 
-Train: R35
+Train: F35
     Type: 1 eti400w.xpm eti400e.xpm
     When: 7
     Enter: 19:34, Mezzana
@@ -3129,7 +3129,7 @@ Train: R35
            +210+30, +030, Gardolo
            +090+30, +030, Trento Nord
            21:34,      -, Trento
-    Wait: R64 60
+    Wait: F64 60
     Stock: MU79
     Notes: Mezzana-Trento
 .
