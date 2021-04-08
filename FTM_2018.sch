@@ -2022,6 +2022,7 @@ Train: MX71
     Enter: 11:40, Male
            14:40, -, Trento@3
     Wait: F253 60
+    Stock: F46
     Notes: Invio vuoto Male-Trento
 .
 
